@@ -24,7 +24,7 @@ RUN tar jxf  murmur-static_x86-${MURMUR_VERSION}.tar.bz2 \
 EXPOSE 64738/tcp 64738/udp
 
 VOLUME ["/etc/murmur", "/var/lib/murmur", "/var/log/murmur"]
-RUN chown -R murmur:murmur /var/lib/murmur /var/log/murmur 
+RUN chown -R murmur /var/lib/murmur /var/log/murmur 
 
 RUN useradd murmur
 USER murmur
