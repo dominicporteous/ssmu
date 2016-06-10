@@ -12,7 +12,7 @@ ADD ./scripts/start /start
 # Download and install everything from the repos.
 RUN    DEBIAN_FRONTEND=noninteractive \
         apt-get -y update && \
-        apt-get -y install bzip2
+        apt-get -y install bzip2 pwgen
         
 ADD https://github.com/mumble-voip/mumble/releases/download/${MURMUR_VERSION}/murmur-static_x86-${MURMUR_VERSION}.tar.bz2 ./
 RUN tar jxf  murmur-static_x86-${MURMUR_VERSION}.tar.bz2 \
@@ -27,7 +27,7 @@ RUN useradd murmur
 
 VOLUME ["/etc/murmur", "/var/lib/murmur", "/var/log/murmur"]
 RUN touch /var/lib/murmur/murmur.sqlite
-RUN chown -R murmur /var/lib/murmur /var/log/murmur 
+RUN chown -R murmur /var/lib/murmur /var/log/murmur /opt/murmur 
 
 
 USER murmur
