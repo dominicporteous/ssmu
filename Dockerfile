@@ -18,7 +18,7 @@ ADD https://github.com/mumble-voip/mumble/releases/download/${MURMUR_VERSION}/mu
 RUN tar jxf  murmur-static_x86-${MURMUR_VERSION}.tar.bz2 \
     && mkdir /opt/murmur \
     && mv murmur-static_x86-${MURMUR_VERSION}/* /opt/murmur \
-    && chmod 700 /usr/bin/docker-murmur
+    && chmod 700 /start
 
 # Exposed port
 EXPOSE 64738/tcp 64738/udp
@@ -26,4 +26,4 @@ EXPOSE 64738/tcp 64738/udp
 RUN useradd murmur
 USER murmur
 VOLUME ["/etc/murmur", "/var/lib/murmur", "/var/log/murmur"]
-CMD ["/usr/bin/dockermurmur"]
+CMD ["/start"]
