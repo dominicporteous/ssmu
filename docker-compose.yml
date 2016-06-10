@@ -1,0 +1,13 @@
+version: '2'
+services:
+    murmur:
+        build: .
+        command: /usr/bin/docker-murmur
+        ports:
+          - "64738/udp"
+          - "64738/tcp"
+        volumes:
+            - /mnt/murmur:/etc/murmur:Z
+            - /mnt/libmurmur:/var/lib/murmur:Z
+            - /mnt/logmurmer:/mnt/murmur:Z
+        restart: always

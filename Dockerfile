@@ -1,4 +1,5 @@
-FROM alpine:3.3
+# Base system is Ubuntu 16.04
+FROM   ubuntu:16.04
 
 # set environment variables
 ENV MURMUR_VERSION=1.2.13
@@ -8,25 +9,15 @@ COPY ./scripts/repositories /etc/apk/repositories
 COPY ./scripts/murmur.ini /etc/murmur/murmur.ini
 COPY ./scripts/docker-murmur /usr/bin/docker-murmur
 
-RUN apk --no-cache add \
-        pwgen \
-        openssl \
-    && adduser -SDH murmur \
-    && mkdir \
-        /opt \
-        /var/lib/murmur \
-        /var/log/murmur \
-        /var/run/murmur \
-    && chown -R murmur:nobody \
-        /var/lib/murmur \
-        /var/log/murmur \
-        /var/run/murmur \
-        /etc/murmur \
-    && wget \
-        https://github.com/mumble-voip/mumble/releases/download/${MURMUR_VERSION}/murmur-static_x86-${MURMUR_VERSION}.tar.bz2 -O - |\
-        bzcat -f |\
-        tar -x -C /opt -f - \
-    && mv /opt/murmur* /opt/murmur \
+# Download and install everything from the repos.
+RUN    DEBIAN_FRONTEND=noninteractive \
+        apt-get -y update && \
+        apt-get -y install bzip2
+        
+GET https://github.com/mumble-voip/mumble/releases/download/${MURMUR_VERSION}/murmur-static_x86-${MURMUR_VERSION}.tar.bz2
+RUN tar jxf  murmur-static_x86-${MURMUR_VERSION}.tar.bz2 \
+    && mkdir /opt/murmur \
+    && mv murmur-static_x86-${MURMUR_VERSION}/* /opt/murmur \
     && chmod 700 /usr/bin/docker-murmur
 
 # Exposed port
