@@ -6,7 +6,7 @@ ENV MURMUR_VERSION=1.2.13
 
 # Add helper files
 COPY scripts/repositories /etc/apk/repositories
-COPY scripts/murmur.ini /etc/murmur/murmur.ini
+COPY scripts/murmer /etc/murmur/murmur.ini
 COPY scripts/docker-murmur /usr/bin/docker-murmur
 
 # Download and install everything from the repos.
