@@ -4,9 +4,9 @@ FROM alpine:3.3
 ENV MURMUR_VERSION=1.2.13
 
 # Add helper files
-COPY ./script/repositories /etc/apk/repositories
-COPY ./script/murmur.ini /etc/murmur/murmur.ini
-COPY ./script/docker-murmur /usr/bin/docker-murmur
+COPY ./scripts/repositories /etc/apk/repositories
+COPY ./scripts/murmur.ini /etc/murmur/murmur.ini
+COPY ./scripts/docker-murmur /usr/bin/docker-murmur
 
 RUN apk --no-cache add \
         pwgen \
