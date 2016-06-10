@@ -5,9 +5,9 @@ FROM   ubuntu:16.04
 ENV MURMUR_VERSION=1.2.13
 
 # Add helper files
-COPY ./scripts/repositories /etc/apk/repositories
-COPY ./scripts/murmur.ini /etc/murmur/murmur.ini
-COPY ./scripts/docker-murmur /usr/bin/docker-murmur
+COPY scripts/repositories /etc/apk/repositories
+COPY scripts/murmur.ini /etc/murmur/murmur.ini
+COPY scripts/docker-murmur /usr/bin/docker-murmur
 
 # Download and install everything from the repos.
 RUN    DEBIAN_FRONTEND=noninteractive \
