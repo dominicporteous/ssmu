@@ -23,10 +23,11 @@ RUN tar jxf  murmur-static_x86-${MURMUR_VERSION}.tar.bz2 \
 # Exposed port
 EXPOSE 64738/tcp 64738/udp
 
+RUN useradd murmur
+
 VOLUME ["/etc/murmur", "/var/lib/murmur", "/var/log/murmur"]
 RUN chown -R murmur /var/lib/murmur /var/log/murmur 
 
-RUN useradd murmur
-USER murmur
 
+USER murmur
 CMD ["/start"]
