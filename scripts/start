@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [[ ${SERVER_PASSWORD+x} ]]; then
     sed -i -e "s/serverpassword=/serverpassword=$SERVER_PASSWORD/" /etc/murmur/murmur.ini
