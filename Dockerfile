@@ -5,9 +5,9 @@ FROM   ubuntu:16.04
 ENV MURMUR_VERSION=1.2.13
 
 # Add helper files
-COPY scripts/repositories /etc/apk/repositories
-COPY scripts/murmer /etc/murmur/murmur.ini
-COPY scripts/dockermurmur /usr/bin/dockermurmur
+ADD ./scripts/repositories /etc/apk/repositories
+ADD ./scripts/murmer /etc/murmur/murmur.ini
+ADD ./scripts/start /start
 
 # Download and install everything from the repos.
 RUN    DEBIAN_FRONTEND=noninteractive \
@@ -22,10 +22,8 @@ RUN tar jxf  murmur-static_x86-${MURMUR_VERSION}.tar.bz2 \
 
 # Exposed port
 EXPOSE 64738/tcp 64738/udp
-WORKDIR /etc/murmur
 
-# Add the data volume for data persistence
+RUN useradd murmur
+USER murmur
 VOLUME ["/etc/murmur", "/var/lib/murmur", "/var/log/murmur"]
-
-# Start murmur in the foreground
-CMD "/usr/bin/dockermurmur"
+CMD ["/usr/bin/dockermurmur"]
