@@ -7,7 +7,7 @@ ENV MURMUR_VERSION=1.2.13
 # Add helper files
 COPY scripts/repositories /etc/apk/repositories
 COPY scripts/murmer /etc/murmur/murmur.ini
-COPY scripts/docker-murmur /usr/bin/docker-murmur
+COPY scripts/dockermurmur /usr/bin/dockermurmur
 
 # Download and install everything from the repos.
 RUN    DEBIAN_FRONTEND=noninteractive \
@@ -28,4 +28,4 @@ WORKDIR /etc/murmur
 VOLUME ["/etc/murmur", "/var/lib/murmur", "/var/log/murmur"]
 
 # Start murmur in the foreground
-CMD "/usr/bin/docker-murmur"
+CMD "/usr/bin/dockermurmur"
