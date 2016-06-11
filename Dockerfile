@@ -27,7 +27,7 @@ RUN useradd murmur
 
 VOLUME ["/etc/murmur", "/var/lib/murmur", "/var/log/murmur"]
 RUN touch /var/lib/murmur/murmur.sqlite
-RUN chown -R murmur /var/lib/murmur /var/log/murmur /opt/murmur 
+RUN chown -R murmur:murmur /var/lib/murmur /var/log/murmur /opt/murmur 
 
 
 USER murmur
