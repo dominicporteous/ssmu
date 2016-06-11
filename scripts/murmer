@@ -7,7 +7,7 @@
 ########################################
 logdays=31
 logfile=/var/log/murmur/murmur.log
-database=
+database=/var/lib/murmur/murmur.sqlite
 dbus=session
 icesecretwrite=
 
