@@ -4,6 +4,8 @@ FROM   ubuntu:16.04
 # set environment variables
 ENV MURMUR_VERSION=1.2.13
 
+VOLUME ["/etc/murmur", "/var/lib/murmur", "/var/log/murmur"]
+
 # Add helper files
 ADD ./scripts/repositories /etc/apk/repositories
 ADD ./scripts/murmer /etc/murmur/murmur.ini
@@ -25,7 +27,7 @@ EXPOSE 64738/tcp 64738/udp
 
 RUN useradd murmur
 
-VOLUME ["/etc/murmur", "/var/lib/murmur", "/var/log/murmur"]
+
 RUN chown -R murmur:murmur /var/lib/murmur /var/log/murmur /opt/murmur 
 
 
