@@ -40,7 +40,7 @@ autobanTime = 86400
 # MISC SETTINGS
 ########################################
 pidfile=/var/run/murmur/murmur.pid
-uname=murmur
+#uname=murmur
 #sslCert=
 #sslKey=
 #certrequired=False
