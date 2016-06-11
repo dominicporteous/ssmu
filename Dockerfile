@@ -26,7 +26,6 @@ EXPOSE 64738/tcp 64738/udp
 RUN useradd murmur
 
 VOLUME ["/etc/murmur", "/var/lib/murmur", "/var/log/murmur"]
-RUN touch /var/lib/murmur/murmur.sqlite
 RUN chown -R murmur:murmur /var/lib/murmur /var/log/murmur /opt/murmur 
 
 
